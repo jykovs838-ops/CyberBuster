@@ -3,89 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Buster | Офіційний сайт</title>
+    <title>Cyber Buster | Official Site</title>
     <style>
+        /* --- ОСНОВНИЙ ДИЗАЙН (CYBER CAT STYLE) --- */
         body {
             background: radial-gradient(circle, #1a1a2e 0%, #0a0a0f 100%);
             color: #00ffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Consolas', monospace;
             margin: 0;
-            overflow: hidden;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
-        .card {
+
+        .main-card {
             background: rgba(20, 20, 35, 0.9);
-            padding: 50px;
+            padding: 40px;
             border-radius: 20px;
             border: 2px solid #ff1493;
-            box-shadow: 0 0 30px #ff1493, inset 0 0 10px #ff1493;
+            box-shadow: 0 0 30px #ff1493;
             text-align: center;
-            max-width: 600px;
+            max-width: 700px;
+            margin-top: 50px;
+            margin-bottom: 50px;
         }
+
         h1 {
             font-size: 3.5em;
             text-transform: uppercase;
             letter-spacing: 5px;
             margin: 0;
-            color: #00ffff;
             text-shadow: 0 0 15px #00ffff;
         }
-        p {
-            font-size: 1.2em;
-            color: #ccc;
-            margin: 20px 0;
-        }
+
         .features {
             text-align: left;
             display: inline-block;
             color: #ff1493;
-            font-family: 'Consolas', monospace;
-            margin-bottom: 30px;
+            margin: 20px 0;
+            line-height: 1.6;
         }
+
         .btn-download {
             display: inline-block;
-            padding: 20px 50px;
+            padding: 15px 40px;
             border: 2px solid #00ff00;
             color: #00ff00;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.5em;
+            font-size: 1.2em;
             border-radius: 50px;
             transition: 0.4s;
             box-shadow: 0 0 10px #00ff00;
+            background: transparent;
+            cursor: pointer;
+            font-family: 'Consolas', monospace;
         }
+
         .btn-download:hover {
             background: #00ff00;
             color: #000;
             box-shadow: 0 0 40px #00ff00;
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
-        .author {
-            margin-top: 30px;
+
+        /* --- СЕКЦІЯ ВІДГУКІВ --- */
+        .reviews-section {
+            width: 90%;
+            max-width: 800px;
+            margin-bottom: 100px;
+            padding: 30px;
+            border: 2px solid #00ffff;
+            background: rgba(10, 10, 20, 0.85);
+            box-shadow: 0 0 20px #00ffff;
+            border-radius: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+            text-transform: uppercase;
+        }
+
+        textarea {
+            width: 100%;
+            height: 100px;
+            background: #05050a;
+            color: #00ffff;
+            border: 1px solid #ff1493;
+            padding: 15px;
+            font-family: 'Consolas', monospace;
+            margin-top: 15px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        .review-card {
+            border-left: 3px solid #ff1493;
+            padding: 15px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 0 10px 10px 0;
+        }
+
+        .user-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .user-meta img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 12px;
+            border: 1px solid #00ffff;
+        }
+
+        .author-tag {
             font-size: 0.8em;
-            color: #444;
+            color: #555;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="card">
+
+    <!-- ГОЛОВНИЙ ЕКРАН -->
+    <div class="main-card">
         <h1>Cyber Buster</h1>
-        <p>Ultra Optimization Mode for Windows</p>
+        <p style="color: #ccc;">Версія: 5.1 [Extreme Edition]</p>
         
         <div class="features">
-            > Глибока очистка RAM<br>
-            > Пріоритет GPU та CPU<br>
-            > Зниження пінгу в іграх<br>
+            /// ТЕХНІЧНИЙ ПРОТОКОЛ:<br>
+            > Глибока очистка RAM (Safe Mode)<br>
+            > Автоматичний пріоритет GPU та CPU<br>
+            > Ping Fix (TCP Optimization)<br>
             > 4 неонові теми інтерфейсу
         </div>
         
-        <br>
-        <a href="CyberBuster_Setup.exe" class="btn-download">СКАЧАТИ БЕЗКОШТОВНО</a>
-        
-        <div class="author">Created by Cyber Cat UA</div>
+        <br><br>
+        <a href="CyberBuster_Setup.exe" class="btn-download">СКАЧАТИ ВЕРСІЮ 5.1 (.EXE)</a>
+        <div class="author-tag">Created by Cyber Cat UA</div>
     </div>
+
+    <!-- СЕКЦІЯ ВІДГУКІВ -->
+    <div class="reviews-section">
+        <h2>/// ВІДГУКИ КОРИСТУВАЧІВ ///</h2>
+
+        <!-- Блок авторизації -->
+        <div id="auth-box" style="text-align: center; padding: 20px;">
+            <button onclick="login()" class="btn-download" style="border-color: #ff1493; color: #ff1493; box-shadow: 0 0 10px #ff1493; font-size: 0.9em;">
+                УВІЙТИ ЧЕРЕЗ GOOGLE ЩОБ ЗАЛИШИТИ ВІДГУК
+            </button>
+        </div>
+
+        <!-- Блок написання відгуку -->
+        <div id="editor-box" style="display: none; border-bottom: 1px solid #333; padding-bottom: 25px;">
+            <p>Ви авторизовані як: <span id="user-display" style="color: #00ff00;"></span></p>
+            <textarea id="review-input" placeholder="Напишіть свою думку про Cyber Buster..."></textarea>
+            <div style="margin-top: 15px;">
+                <button onclick="saveReview()" style="background: #00ff00; color: #000; border: none; padding: 12px 25px; font-weight: bold; cursor: pointer; border-radius: 5px;">ОПУБЛІКУВАТИ / ОНОВИТИ</button>
+                <button onclick="deleteReview()" style="background: none; border: none; color: #ff0000; text-decoration: underline; cursor: pointer; margin-left: 20px;">Видалити мій відгук</button>
+            </div>
+        </div>
+
+        <!-- Список відгуків -->
+        <div id="reviews-list" style="margin-top: 30px;">
+            <p style="color: gray; text-align: center;">Завантаження відгуків...</p>
+        </div>
+    </div>
+
+    <!-- FIREBASE SDK (COMPAT) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // ТВОЯ КОНФІГУРАЦІЯ FIREBASE
+        const firebaseConfig = {
+            apiKey: "AIzaSyDtEGD1v5tjbTSABqLqX2whpSPlxp5zCfE",
+            authDomain: "cyberbustersite.firebaseapp.com",
+            projectId: "cyberbustersite",
+            storageBucket: "cyberbustersite.firebasestorage.app",
+            messagingSenderId: "1012161583279",
+            appId: "1:1012161583279:web:5bf796c60c62239f7c1c5a",
+            measurementId: "G-SQ2JC0BYDP"
+        };
+
+        // Ініціалізація
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Вхід через Google
+        function login() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            auth.signInWithPopup(provider).catch(err => alert("Помилка входу: " + err.message));
+        }
+
+        // Відстеження стану входу
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                document.getElementById('auth-box').style.display = 'none';
+                document.getElementById('editor-box').style.display = 'block';
+                document.getElementById('user-display').innerText = user.displayName;
+                
+                // Завантажуємо існуючий відгук користувача (якщо він є)
+                db.collection('reviews').doc(user.uid).get().then(doc => {
+                    if (doc.exists) document.getElementById('review-input').value = doc.data().text;
+                });
+            } else {
+                document.getElementById('auth-box').style.display = 'block';
+                document.getElementById('editor-box').style.display = 'none';
+            }
+        });
+
+        // Збереження або оновлення відгуку
+        async function saveReview() {
+            const user = auth.currentUser;
+            const text = document.getElementById('review-input').value;
+            if (!text.trim()) { alert("Будь ласка, напишіть текст відгуку!"); return; }
+
+            try {
+                // Використовуємо .doc(user.uid), щоб один користувач мав лише один запис
+                await db.collection('reviews').doc(user.uid).set({
+                    name: user.displayName,
+                    text: text,
+                    photo: user.photoURL,
+                    uid: user.uid,
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                alert("Дякуємо! Ваш відгук опубліковано.");
+            } catch (err) {
+                alert("Помилка збереження: " + err.message);
+            }
+        }
+
+        // Видалення власного відгуку
+        async function deleteReview() {
+            if (confirm("Ви впевнені, що хочете видалити свій відгук?")) {
+                try {
+                    await db.collection('reviews').doc(auth.currentUser.uid).delete();
+                    document.getElementById('review-input').value = "";
+                    alert("Відгук видалено.");
+                } catch (err) {
+                    alert("Помилка видалення: " + err.message);
+                }
+            }
+        }
+
+        // Відображення списку відгуків в реальному часі
+        db.collection('reviews').orderBy('timestamp', 'desc').onSnapshot(snap => {
+            const list = document.getElementById('reviews-list');
+            list.innerHTML = "";
+            
+            if (snap.empty) {
+                list.innerHTML = "<p style='text-align:center; color:gray;'>Будьте першим, хто залишить відгук!</p>";
+                return;
+            }
+
+            snap.forEach(doc => {
+                const r = doc.data();
+                // Безпечне виведення тексту
+                const div = document.createElement('div');
+                div.className = 'review-card';
+                div.innerHTML = `
+                    <div class="user-meta">
+                        <img src="${r.photo || 'https://via.placeholder.com/35'}" alt="avatar">
+                        <b style="color: #00ffff;">${r.name}:</b>
+                    </div>
+                    <p style="color: #eee; margin-left: 47px; white-space: pre-wrap;">${r.text}</p>
+                `;
+                list.appendChild(div);
+            });
+        });
+    </script>
 </body>
 </html>

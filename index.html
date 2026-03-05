@@ -10,70 +10,47 @@
             background: radial-gradient(circle at center, #0a0a1a 0%, #05050a 100%);
             color: #00ffff;
             font-family: 'Consolas', 'Courier New', monospace;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
+            margin: 0; padding: 0;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh; overflow-x: hidden;
         }
 
         .quantum-header {
-            width: 100%;
-            padding: 80px 0;
-            text-align: center;
+            width: 100%; padding: 80px 0; text-align: center;
             border-bottom: 2px solid #ff1493;
             box-shadow: 0 0 30px rgba(255, 20, 147, 0.4);
             background: rgba(10, 10, 20, 0.8);
         }
 
         h1 {
-            font-size: clamp(2em, 8vw, 4em);
-            margin: 0;
+            font-size: clamp(2em, 8vw, 4em); margin: 0;
             text-shadow: 0 0 20px #00ffff, 0 0 40px rgba(0, 255, 255, 0.5);
-            letter-spacing: 8px;
-            text-transform: uppercase;
+            letter-spacing: 8px; text-transform: uppercase;
         }
 
         .version-tag {
-            background: #ff1493;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 0.4em;
-            vertical-align: middle;
-            text-shadow: none;
-            letter-spacing: normal;
+            background: #ff1493; color: white; padding: 4px 12px;
+            border-radius: 4px; font-size: 0.4em; vertical-align: middle;
+            text-shadow: none; letter-spacing: normal;
         }
 
-        .container {
-            max-width: 1000px;
-            width: 90%;
-            margin: 50px 0;
-        }
+        .container { max-width: 1000px; width: 90%; margin: 50px 0; }
 
-        /* GRID СИСТЕМА ФУНКЦІЙ */
+        /* GRID СИСТЕМА */
         .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; margin-bottom: 60px;
         }
 
         .card {
-            background: rgba(20, 20, 35, 0.6);
-            padding: 25px;
-            border: 1px solid #00ffff;
-            border-radius: 12px;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
+            background: rgba(20, 20, 35, 0.6); padding: 25px;
+            border: 1px solid #00ffff; border-radius: 12px;
+            transition: 0.3s; position: relative;
         }
 
         .card:hover {
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-            transform: translateY(-5px);
-            background: rgba(20, 20, 35, 0.9);
+            transform: translateY(-5px); background: rgba(20, 20, 35, 0.9);
         }
 
         .card h3 { color: #ff1493; margin-top: 0; border-bottom: 1px solid #333; padding-bottom: 10px; }
@@ -81,46 +58,28 @@
 
         /* ЗОНА ЗАВАНТАЖЕННЯ */
         .download-box {
-            text-align: center;
-            background: rgba(0, 255, 0, 0.05);
-            padding: 60px 20px;
-            border-radius: 24px;
-            border: 2px dashed #00ff00;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
+            text-align: center; background: rgba(0, 255, 0, 0.05);
+            padding: 60px 20px; border-radius: 24px;
+            border: 2px dashed #00ff00; box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
         }
 
         .btn-main {
-            display: inline-block;
-            padding: 22px 60px;
-            background: transparent;
-            border: 2px solid #00ff00;
-            color: #00ff00;
-            font-size: 1.6em;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 0 15px #00ff00;
-            transition: 0.4s;
-            cursor: pointer;
+            display: inline-block; padding: 22px 60px; background: transparent;
+            border: 2px solid #00ff00; color: #00ff00; font-size: 1.6em;
+            font-weight: bold; text-decoration: none; border-radius: 50px;
+            box-shadow: 0 0 15px #00ff00; transition: 0.4s; cursor: pointer;
             text-transform: uppercase;
         }
 
-        .btn-main:hover {
-            background: #00ff00;
-            color: #000;
-            box-shadow: 0 0 50px #00ff00;
-            transform: scale(1.05);
-        }
+        .btn-main:hover { background: #00ff00; color: #000; box-shadow: 0 0 50px #00ff00; transform: scale(1.05); }
 
         /* ВІДГУКИ */
         .reviews-wrap { margin-top: 80px; width: 100%; }
         .rev-card { 
-            background: #0a0a15; 
-            border: 1px solid #333; 
-            border-left: 5px solid #ff1493; 
-            padding: 20px; 
-            margin-bottom: 20px; 
-            border-radius: 0 10px 10px 0;
+            background: #0a0a15; border: 1px solid #333; 
+            border-left: 5px solid #ff1493; padding: 20px; 
+            margin-bottom: 20px; border-radius: 0 10px 10px 0;
+            position: relative;
         }
         .rev-user { color: #00ffff; font-weight: bold; margin-bottom: 8px; display: flex; align-items: center; }
         .rev-user img { width: 30px; height: 30px; border-radius: 50%; margin-right: 12px; border: 1px solid #ff1493; }
@@ -130,6 +89,14 @@
             border: 1px solid #ff1493; padding: 15px; border-radius: 8px; 
             font-family: 'Consolas'; font-size: 1em; box-sizing: border-box;
         }
+
+        /* АДМІН ПАНЕЛЬ СТИЛІ */
+        .admin-tools {
+            margin-top: 15px; display: flex; gap: 10px;
+        }
+        .btn-del { background: #ff4d4d; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-family: 'Consolas'; font-size: 10px; }
+        .btn-ban { background: #ffa500; color: black; border: none; padding: 6px 12px; cursor: pointer; border-radius: 4px; font-family: 'Consolas'; font-size: 10px; font-weight: bold; }
+        .banned-notice { color: #ff4d4d; text-align: center; border: 1px solid #ff4d4d; padding: 20px; border-radius: 10px; background: rgba(255, 77, 77, 0.1); }
 
         .footer { margin: 50px 0; color: #444; font-size: 0.8em; }
     </style>
@@ -178,13 +145,13 @@
             </div>
 
             <div id="editor-section" style="display: none; margin-bottom: 40px; background:rgba(255,20,147,0.05); padding:20px; border-radius:10px;">
-                <p style="margin-top:0;">Ваш статус: <span id="user-name" style="color:#00ff00;"></span></p>
-                <textarea id="rev-input" placeholder="Введіть текст відгуку..."></textarea>
+                <p style="margin-top:0;">Статус: <span id="user-name" style="color:#00ff00;"></span></p>
+                <textarea id="rev-input" placeholder="Введіть текст звіту..."></textarea>
                 <button onclick="saveReview()" style="background:#00ff00; color:#000; border:none; padding:12px 30px; margin-top:15px; font-weight:bold; cursor:pointer; border-radius:4px;">ОПУБЛІКУВАТИ ЗВІТ</button>
             </div>
 
             <div id="reviews-list">
-                <!-- Відгуки підвантажаться сюди -->
+                <!-- Відгуки підвантажаться автоматично -->
             </div>
         </div>
 
@@ -197,7 +164,6 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
 
     <script>
-        // ТВОЇ КЛЮЧІ FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyDtEGD1v5tjbTSABqLqX2whpSPlxp5zCfE",
             authDomain: "cyberbustersite.firebaseapp.com",
@@ -211,39 +177,76 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
 
-        // AUTH LOGIC
+        // ТВІЙ UID
+        const ADMIN_UID = "ZEnDPepEW9PcjUVfvgqjmr4USlb2";
+        let isAdmin = false;
+
         function login() {
             auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(e => alert("Помилка: " + e.message));
         }
 
-        auth.onAuthStateChanged(user => {
+        auth.onAuthStateChanged(async (user) => {
             if(user) {
+                isAdmin = (user.uid === ADMIN_UID);
+                
+                // Перевірка на бан
+                const banDoc = await db.collection('banned').doc(user.uid).get();
+                if(banDoc.exists) {
+                    document.getElementById('auth-section').style.display = 'none';
+                    document.getElementById('editor-section').style.display = 'block';
+                    document.getElementById('editor-section').innerHTML = `<div class="banned-notice">ВАС ЗАБЛОКОВАНО ЗА ПОРУШЕННЯ ПРАВИЛ МЕРЕЖІ</div>`;
+                    return;
+                }
+
                 document.getElementById('auth-section').style.display = 'none';
                 document.getElementById('editor-section').style.display = 'block';
-                document.getElementById('user-name').innerText = user.displayName;
+                document.getElementById('user-name').innerText = user.displayName + (isAdmin ? " [ADMIN]" : " [USER]");
+                
                 db.collection('reviews').doc(user.uid).get().then(doc => {
                     if(doc.exists) document.getElementById('rev-input').value = doc.data().text;
                 });
             }
         });
 
-        // SAVE REVIEW (1 User = 1 Doc)
         async function saveReview() {
             const user = auth.currentUser;
             const text = document.getElementById('rev-input').value;
-            if(!text.trim()) return;
+            if(!text.trim() || !user) return;
+
             try {
                 await db.collection('reviews').doc(user.uid).set({
+                    uid: user.uid,
                     name: user.displayName,
                     text: text,
                     photo: user.photoURL,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
-                alert("Звіт прийнято!");
-            } catch(e) { alert("Помилка: " + e.message); }
+                alert("Звіт оновлено!");
+            } catch(e) { alert("Помилка доступу: " + e.message); }
         }
 
-        // REAL-TIME LIST
+        // АДМІН-ФУНКЦІЇ
+        async function deleteReview(id) {
+            if(!isAdmin) return;
+            if(confirm("ВИДАЛИТИ ЦЕЙ ЗВІТ?")) {
+                await db.collection('reviews').doc(id).delete();
+            }
+        }
+
+        async function banUser(uid, name) {
+            if(!isAdmin) return;
+            if(confirm(`ЗАБАНУВАТИ ОПЕРАТОРА ${name}?`)) {
+                await db.collection('banned').doc(uid).set({
+                    name: name,
+                    reason: "Порушення правил",
+                    date: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                await db.collection('reviews').doc(uid).delete();
+                alert("КОРИСТУВАЧА ЗАБЛОКОВАНО");
+            }
+        }
+
+        // ВІДОБРАЖЕННЯ СПИСКУ
         db.collection('reviews').orderBy('timestamp', 'desc').onSnapshot(snap => {
             const list = document.getElementById('reviews-list');
             list.innerHTML = "";
@@ -251,16 +254,28 @@
                 const r = doc.data();
                 const div = document.createElement('div');
                 div.className = 'rev-card';
+                
+                let adminPanel = "";
+                if(isAdmin && r.uid !== ADMIN_UID) {
+                    adminPanel = `
+                        <div class="admin-tools">
+                            <button class="btn-del" onclick="deleteReview('${doc.id}')">ВИДАЛИТИ</button>
+                            <button class="btn-ban" onclick="banUser('${r.uid}', '${r.name}')">БАН</button>
+                        </div>
+                    `;
+                }
+
                 div.innerHTML = `
                     <div class="rev-user">
                         <img src="${r.photo || ''}" alt="">
                         <span>${r.name}</span>
                     </div>
                     <p style="color:#eee; margin:0; white-space:pre-wrap;">${r.text}</p>
+                    ${adminPanel}
                 `;
                 list.appendChild(div);
             });
-            if(list.innerHTML === "") list.innerHTML = "<p style='text-align:center; color:#444;'>Очікування перших звітів...</p>";
+            if(list.innerHTML === "") list.innerHTML = "<p style='text-align:center; color:#444;'>Очікування даних...</p>";
         });
     </script>
 </body>

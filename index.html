@@ -199,12 +199,12 @@
 
     <header class="header">
         <h1>Cyber Buster <span style="font-size: 0.5em; opacity: 0.8;">v12</span></h1>
-        <div class="version-badge">INFINITY HYPER-CORE</div>
+        <div class="version-badge">INFINITY CORE</div>
     </header>
 
     <div class="container">
         
-        <!-- ПАНЕЛЬ КЕРУВАННЯ ТА СОЦМЕРЕЖІ -->
+        <!-- ТОП ПАНЕЛЬ -->
         <div class="top-row">
             <a href="https://www.youtube.com/@CyberCatUA" target="_blank" class="glass-card btn-yt">
                 <strong>YOUTUBE</strong>
@@ -241,11 +241,11 @@
             </div>
         </div>
 
-        <!-- ЗАВАНТАЖЕННЯ (ПРЯМЕ ПОСИЛАННЯ ВЖЕ ТУТ) -->
+        <!-- ЗАВАНТАЖЕННЯ (ПРЯМЕ ПОСИЛАННЯ) -->
         <div class="download-section">
             <p style="color: var(--primary); font-weight: bold; margin-bottom: 25px; letter-spacing: 8px; font-size: 14px;">/// CORE READY FOR DOWNLOAD ///</p>
-            <a href="https://github.com/jykovs838-ops/CyberBuster/raw/main/CyberBuster_Setup.exe" class="btn-download">Download v12.0</a>
-            <p style="margin-top: 35px; opacity: 0.3; font-size: 11px; letter-spacing: 1px;">BUILD: 12.0.92-RELEASE | SHA-256 ENCRYPTED | AUTOMATIC UPDATES ENABLED</p>
+            <a href="https://github.com/jykovs838-ops/CyberBuster/raw/main/CyberBuster_Setup_v12.exe" class="btn-download">Download v12.0</a>
+            <p style="margin-top: 35px; opacity: 0.3; font-size: 11px; letter-spacing: 1px;">BUILD: 12.0.98-FINAL | SHA-256 ENCRYPTED | AUTOMATIC UPDATES ENABLED</p>
         </div>
 
         <!-- ВІДГУКИ -->
@@ -298,7 +298,6 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
 
-        // ТВІЙ АДМІН UID
         const ADMIN_UID = "ZEnDPepEW9PcjUVfvgqjmr4USlb2";
         let isAdmin = false;
 
@@ -351,13 +350,13 @@
             await db.collection('reviews').doc(u.uid).set({
                 uid: u.uid, name: u.displayName, text: t, photo: u.photoURL, timestamp: firebase.firestore.FieldValue.serverTimestamp()
             });
-            alert("Report synchronized with the database.");
+            alert("Report synchronized.");
             document.getElementById('rev-input').value = "";
         }
 
-        async function delRev(id) { if(confirm("Вилучити дані зі сховища?")) await db.collection('reviews').doc(id).delete(); }
+        async function delRev(id) { if(confirm("Delete report?")) await db.collection('reviews').doc(id).delete(); }
         async function banUsr(uid, n) {
-            if(confirm("Розірвати доступ для оператора " + n + "?")) {
+            if(confirm("Terminate access for " + n + "?")) {
                 await db.collection('banned').doc(uid).set({ name: n, date: firebase.firestore.FieldValue.serverTimestamp() });
                 await db.collection('reviews').doc(uid).delete();
             }
@@ -387,7 +386,6 @@
                         <div class="admin-controls">${adBtn}</div>
                     </div>`;
             });
-            if(list.innerHTML === "") list.innerHTML = "<p style='text-align:center; opacity:0.2; letter-spacing:5px; margin-top:50px;'>AWAITING INCOMING DATA...</p>";
         });
     </script>
 </body>

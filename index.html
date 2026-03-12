@@ -29,12 +29,12 @@
             overflow-x: hidden;
         }
 
-        /* Ефект скануючої лінії */
+        /* Анімована лінія сканування */
         body::after {
             content: "";
             position: fixed; top: 0; left: 0; width: 100%; height: 2px;
-            background: rgba(0, 255, 157, 0.1);
-            animation: scanline 8s linear infinite;
+            background: rgba(0, 255, 157, 0.15);
+            animation: scanline 6s linear infinite;
             z-index: 999; pointer-events: none;
         }
 
@@ -71,26 +71,31 @@
 
         .glass-card {
             background: var(--glass);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border);
             border-radius: 20px;
-            padding: 20px;
+            padding: 25px;
             text-align: center;
-            transition: 0.4s;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-decoration: none; color: #fff;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
 
         .glass-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 10px 40px rgba(0, 255, 157, 0.2);
-            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 255, 157, 0.3);
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .btn-yt { border-left: 4px solid #ff0000; }
-        .btn-tt { border-left: 4px solid var(--accent); }
-        .btn-status { border-left: 4px solid var(--primary); cursor: pointer; }
+        .btn-yt { border-left: 5px solid #ff0000; }
+        .btn-tt { border-left: 5px solid var(--accent); }
+        .btn-status { border-left: 5px solid var(--primary); cursor: pointer; position: relative; }
+
+        .status-dot { width: 12px; height: 12px; border-radius: 50%; background: #444; position: absolute; right: 20px; top: 20px; }
+        .active .status-dot { background: var(--primary); box-shadow: 0 0 15px var(--primary); animation: glow 1.5s infinite; }
+        @keyframes glow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
 
         /* ФУНКЦІЇ */
         .feature-grid {
@@ -112,99 +117,106 @@
         }
 
         .feature-card:hover {
-            background: rgba(255, 255, 255, 0.06);
+            background: rgba(255, 255, 255, 0.07);
             border-color: var(--border);
-            transform: scale(1.02);
+            transform: translateY(-5px);
         }
 
-        .feature-card h3 { color: var(--primary); font-size: 1.4em; margin-bottom: 15px; letter-spacing: 2px; }
-        .feature-card p { color: #aaa; line-height: 1.7; font-size: 15px; margin: 0; }
+        .feature-card h3 { color: var(--primary); font-size: 1.5em; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase; }
+        .feature-card p { color: #ccc; line-height: 1.8; font-size: 15px; margin: 0; }
 
         /* ЗОНА ЗАВАНТАЖЕННЯ */
         .download-section {
-            text-align: center; padding: 100px 40px;
-            background: radial-gradient(circle at center, rgba(0, 255, 157, 0.05), transparent);
+            text-align: center; padding: 110px 40px;
+            background: radial-gradient(circle at center, rgba(0, 255, 157, 0.07), transparent);
             border: 1px solid var(--border); border-radius: 40px;
-            position: relative;
+            position: relative; backdrop-filter: blur(5px);
         }
 
         .btn-download {
             display: inline-block;
-            padding: 28px 80px;
+            padding: 30px 90px;
             background: var(--primary);
             color: #000;
             text-decoration: none;
-            font-size: 22px;
+            font-size: 24px;
             font-weight: 900;
             border-radius: 100px;
-            box-shadow: 0 15px 40px rgba(0, 255, 157, 0.4);
+            box-shadow: 0 15px 50px rgba(0, 255, 157, 0.5);
             transition: 0.4s;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
         }
 
         .btn-download:hover {
-            transform: scale(1.08) translateY(-5px);
-            box-shadow: 0 20px 60px rgba(0, 255, 157, 0.6);
+            transform: scale(1.06) translateY(-5px);
+            box-shadow: 0 20px 70px rgba(0, 255, 157, 0.7);
+            filter: brightness(1.1);
         }
 
         /* ВІДГУКИ */
-        .reviews-container { margin-top: 120px; }
+        .reviews-container { margin-top: 130px; }
         .rev-item {
             background: var(--glass);
             border: 1px solid rgba(255,255,255,0.05);
             border-radius: 20px; padding: 30px; margin-bottom: 25px;
+            transition: 0.3s;
         }
+        .rev-item:hover { border-color: var(--border); background: rgba(255,255,255,0.05); }
 
         .rev-header { display: flex; align-items: center; margin-bottom: 15px; }
         .rev-header img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--primary); margin-right: 15px; }
-        .rev-name { font-weight: bold; color: var(--secondary); font-size: 18px; }
+        .rev-name { font-weight: bold; color: var(--secondary); font-size: 19px; }
 
         textarea {
-            width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border);
-            border-radius: 15px; color: #fff; padding: 20px; font-size: 16px;
-            margin-bottom: 20px; box-sizing: border-box; outline: none;
+            width: 100%; background: rgba(0,0,0,0.5); border: 1px solid var(--border);
+            border-radius: 15px; color: #fff; padding: 25px; font-size: 16px;
+            margin-bottom: 25px; box-sizing: border-box; outline: none;
+            font-family: inherit; transition: 0.3s;
         }
+        textarea:focus { border-color: var(--primary); box-shadow: 0 0 20px rgba(0, 255, 157, 0.1); }
 
-        /* АДМІНКА */
+        .btn-submit { background: var(--secondary); color: #000; border: none; padding: 18px 45px; border-radius: 12px; font-weight: 900; cursor: pointer; text-transform: uppercase; transition: 0.3s; }
+        .btn-submit:hover { transform: scale(1.03); box-shadow: 0 0 20px var(--secondary); }
+
+        /* АДМІН ПАНЕЛЬ */
         #admin-modal {
             display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            background: #0a0a15; border: 2px solid var(--primary); padding: 40px;
-            border-radius: 30px; z-index: 10000; text-align: center; box-shadow: 0 0 200px #000;
+            background: #080812; border: 2px solid var(--primary); padding: 50px;
+            border-radius: 35px; z-index: 10000; text-align: center; box-shadow: 0 0 250px #000;
         }
 
-        .status-dot { width: 12px; height: 12px; border-radius: 50%; background: #555; position: absolute; right: 20px; top: 20px; }
-        .active .status-dot { background: var(--primary); box-shadow: 0 0 15px var(--primary); animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-
-        .admin-controls { margin-top: 15px; display: flex; gap: 10px; }
-        .adm-btn { border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; font-size: 11px; font-weight: bold; text-transform: uppercase; }
+        .admin-controls { margin-top: 25px; display: flex; gap: 15px; justify-content: center; }
+        .adm-btn { border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 12px; font-weight: bold; text-transform: uppercase; transition: 0.2s; }
         .adm-del { background: #ff4d4d; color: #fff; }
         .adm-ban { background: #ffa500; color: #000; }
+        .adm-btn:hover { filter: brightness(1.2); transform: scale(1.05); }
+
+        .footer { margin: 100px 0 50px; color: #333; font-size: 13px; letter-spacing: 5px; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
     <header class="header">
-        <h1>Cyber Buster <span style="font-size: 0.5em; opacity: 0.7;">v12</span></h1>
-        <div class="version-badge">INFINITY CORE</div>
+        <h1>Cyber Buster <span style="font-size: 0.5em; opacity: 0.8;">v12</span></h1>
+        <div class="version-badge">INFINITY HYPER-CORE</div>
     </header>
 
     <div class="container">
         
-        <!-- ТОП ПАНЕЛЬ -->
+        <!-- ПАНЕЛЬ КЕРУВАННЯ ТА СОЦМЕРЕЖІ -->
         <div class="top-row">
             <a href="https://www.youtube.com/@CyberCatUA" target="_blank" class="glass-card btn-yt">
                 <strong>YOUTUBE</strong>
-                <small style="opacity: 0.6; margin-top: 5px;">Cyber Cat UA</small>
+                <small style="opacity: 0.6; margin-top: 8px; letter-spacing: 1px;">Cyber Cat UA</small>
             </a>
             <a href="https://www.tiktok.com/@cyber_cat_ua_dev" target="_blank" class="glass-card btn-tt">
                 <strong>TIKTOK</strong>
-                <small style="opacity: 0.6; margin-top: 5px;">Dev Log</small>
+                <small style="opacity: 0.6; margin-top: 8px; letter-spacing: 1px;">Dev Log</small>
             </a>
             <div id="status-card" class="glass-card btn-status" onclick="handleStatusClick()">
                 <strong>CORE STATUS</strong>
-                <small id="st-text" style="opacity: 0.6; margin-top: 5px;">SYNCING...</small>
+                <small id="st-text" style="opacity: 0.6; margin-top: 8px; letter-spacing: 1px;">INITIALIZING...</small>
                 <div class="status-dot"></div>
             </div>
         </div>
@@ -213,41 +225,42 @@
         <div class="feature-grid">
             <div class="feature-card">
                 <h3>[1] NEURAL BYPASS</h3>
-                <p>Нейронна мережа версії 12.0 аналізує код гри та створює динамічний обхід обмежень у реальному часі.</p>
+                <p>Нейронна мережа v12.0 адаптивно аналізує системні виклики та формує невидимий тунель для ігрових даних.</p>
             </div>
             <div class="feature-card">
                 <h3>[2] HYPER-THREADING</h3>
-                <p>Оптимізація потоків процесора на рівні заліза. Збільшення FPS у Source 2 іграх до 40%.</p>
+                <p>Інтелектуальний розподіл навантаження між ядрами CPU. Повний контроль пріоритетів без мікрофризів.</p>
             </div>
             <div class="feature-card">
-                <h3>[3] KERNEL-PROTECT</h3>
-                <p>Робота у "кільці 0" забезпечує повну невидимість процесів Бустера для будь-яких системних моніторів.</p>
+                <h3>[3] KERNEL PROTECT</h3>
+                <p>Захист на рівні ядра системи (Ring 0) гарантує повну ізоляцію процесів Cyber Buster від зовнішнього моніторингу.</p>
             </div>
             <div class="feature-card">
                 <h3>[4] ZERO-LAG UI</h3>
-                <p>Абсолютно новий інтерфейс на базі апаратного прискорення GPU. Плавність 144Hz навіть під навантаженням.</p>
+                <p>Інтерфейс на базі GPU-прискорення. Плавність 144Hz та миттєвий відгук навіть під час пікових навантажень.</p>
             </div>
         </div>
 
-        <!-- ЗАВАНТАЖЕННЯ -->
+        <!-- ЗАВАНТАЖЕННЯ (ПРЯМЕ ПОСИЛАННЯ ВЖЕ ТУТ) -->
         <div class="download-section">
-            <p style="color: var(--primary); font-weight: bold; margin-bottom: 20px; letter-spacing: 5px;">/// READY FOR INITIALIZATION ///</p>
-            <!-- ТУТ ТВОЄ ПОСИЛАННЯ -->
-            <a href="ВСТАВ_ПРЯМЕ_ПОСИЛАННЯ_З_GITHUB" class="btn-download">Download v12.0</a>
-            <p style="margin-top: 30px; opacity: 0.4; font-size: 12px;">Build: 12.0.84 | SHA-256 Verified | Last Updated: Today</p>
+            <p style="color: var(--primary); font-weight: bold; margin-bottom: 25px; letter-spacing: 8px; font-size: 14px;">/// CORE READY FOR DOWNLOAD ///</p>
+            <a href="https://github.com/jykovs838-ops/CyberBuster/raw/main/CyberBuster_Setup.exe" class="btn-download">Download v12.0</a>
+            <p style="margin-top: 35px; opacity: 0.3; font-size: 11px; letter-spacing: 1px;">BUILD: 12.0.92-RELEASE | SHA-256 ENCRYPTED | AUTOMATIC UPDATES ENABLED</p>
         </div>
 
         <!-- ВІДГУКИ -->
         <div class="reviews-container" id="reviews">
-            <h2 style="text-align: center; margin-bottom: 50px; letter-spacing: 5px;">/// OPERATOR REPORTS ///</h2>
+            <h2 style="text-align: center; margin-bottom: 60px; letter-spacing: 10px; font-weight: 300; color: var(--primary);">/// SYSTEM REPORTS ///</h2>
             
-            <div id="auth-box" style="text-align: center; margin-bottom: 40px;">
-                <button onclick="login()" style="background:var(--primary); color:#000; border:none; padding:15px 40px; border-radius:10px; font-weight:bold; cursor:pointer;">AUTH WITH GOOGLE</button>
+            <div id="auth-box" style="text-align: center; margin-bottom: 50px;">
+                <button onclick="login()" style="background:var(--primary); color:#000; border:none; padding:18px 50px; border-radius:15px; font-weight:900; cursor:pointer; letter-spacing:2px; text-transform:uppercase;">Connect Identity</button>
             </div>
 
-            <div id="editor" style="display: none; margin-bottom: 50px;">
-                <textarea id="rev-input" placeholder="Enter your system report..."></textarea>
-                <button onclick="saveReview()" style="background:var(--secondary); color:#000; border:none; padding:15px 40px; border-radius:10px; font-weight:bold; cursor:pointer;">SUBMIT REPORT</button>
+            <div id="editor" style="display: none; margin-bottom: 60px;">
+                <textarea id="rev-input" placeholder="Введіть ваш звіт про роботу системи v12..."></textarea>
+                <div style="text-align: right;">
+                    <button class="btn-submit" onclick="saveReview()">Submit Data</button>
+                </div>
             </div>
 
             <div id="reviews-list"></div>
@@ -255,15 +268,15 @@
     </div>
 
     <footer class="footer">
-        CYBER CAT UA © 2026 | QUANTUM INFRASTRUCTURE
+        CYBER CAT UA © 2026 | INFINITY INFRASTRUCTURE
     </footer>
 
     <!-- АДМІНКА СТАТУСУ -->
     <div id="admin-modal">
-        <h2 style="color: var(--primary);">SYSTEM CONTROL</h2>
-        <button onclick="updateStatus('on')" style="background:var(--primary); padding:15px 30px; border:none; border-radius:10px; font-weight:bold; cursor:pointer; margin:10px;">ONLINE</button>
-        <button onclick="updateStatus('off')" style="background:#ff4d4d; padding:15px 30px; border:none; border-radius:10px; font-weight:bold; cursor:pointer; margin:10px; color:#fff;">OFFLINE</button>
-        <br><button onclick="document.getElementById('admin-modal').style.display='none'" style="background:none; border:none; color:gray; margin-top:20px; cursor:pointer;">CLOSE</button>
+        <h2 style="color: var(--primary); letter-spacing: 3px; margin-bottom: 30px;">CORE MANAGEMENT</h2>
+        <button onclick="updateStatus('on')" style="background:var(--primary); padding:18px 40px; border:none; border-radius:12px; font-weight:900; cursor:pointer; margin:10px; width:150px;">ONLINE</button>
+        <button onclick="updateStatus('off')" style="background:#ff4d4d; padding:18px 40px; border:none; border-radius:12px; font-weight:900; cursor:pointer; margin:10px; color:#fff; width:150px;">OFFLINE</button>
+        <br><button onclick="document.getElementById('admin-modal').style.display='none'" style="background:none; border:none; color:rgba(255,255,255,0.3); margin-top:30px; cursor:pointer; font-weight:bold; text-decoration:underline;">CLOSE CONSOLE</button>
     </div>
 
     <!-- FIREBASE -->
@@ -285,10 +298,11 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
 
+        // ТВІЙ АДМІН UID
         const ADMIN_UID = "ZEnDPepEW9PcjUVfvgqjmr4USlb2";
         let isAdmin = false;
 
-        // --- STATUS SYSTEM ---
+        // --- КЕРУВАННЯ СТАТУСОМ (3 КЛІКИ) ---
         let clicks = 0;
         function handleStatusClick() {
             if(!isAdmin) return;
@@ -307,13 +321,13 @@
             const card = document.getElementById('status-card');
             const label = document.getElementById('st-text');
             if(data && data.status === 'on') {
-                card.classList.add('active'); label.innerText = "ONLINE";
+                card.classList.add('active'); label.innerText = "ONLINE (ACTIVE)";
             } else {
-                card.classList.remove('active'); label.innerText = "STANDBY";
+                card.classList.remove('active'); label.innerText = "STANDBY (SLEEP)";
             }
         });
 
-        // --- AUTH & REVIEWS ---
+        // --- АВТОРИЗАЦІЯ ---
         function login() { auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()); }
 
         auth.onAuthStateChanged(async user => {
@@ -321,7 +335,7 @@
                 isAdmin = (user.uid === ADMIN_UID);
                 const ban = await db.collection('banned').doc(user.uid).get();
                 if(ban.exists) {
-                    document.getElementById('reviews').innerHTML = "<h2 style='color:red; text-align:center;'>ACCESS DENIED</h2>";
+                    document.getElementById('reviews').innerHTML = "<h2 style='color:#ff4d4d; text-align:center; padding:100px; border:2px solid #ff4d4d; border-radius:30px; background:rgba(255,77,77,0.1);'>ACCESS DENIED: OPERATOR TERMINATED</h2>";
                     return;
                 }
                 document.getElementById('auth-box').style.display = 'none';
@@ -329,6 +343,7 @@
             }
         });
 
+        // --- ВІДГУКИ ---
         async function saveReview() {
             const u = auth.currentUser;
             const t = document.getElementById('rev-input').value;
@@ -336,14 +351,14 @@
             await db.collection('reviews').doc(u.uid).set({
                 uid: u.uid, name: u.displayName, text: t, photo: u.photoURL, timestamp: firebase.firestore.FieldValue.serverTimestamp()
             });
-            alert("Report submitted.");
+            alert("Report synchronized with the database.");
             document.getElementById('rev-input').value = "";
         }
 
-        async function delRev(id) { if(confirm("Delete report?")) await db.collection('reviews').doc(id).delete(); }
+        async function delRev(id) { if(confirm("Вилучити дані зі сховища?")) await db.collection('reviews').doc(id).delete(); }
         async function banUsr(uid, n) {
-            if(confirm("Ban operator " + n + "?")) {
-                await db.collection('banned').doc(uid).set({ name: n });
+            if(confirm("Розірвати доступ для оператора " + n + "?")) {
+                await db.collection('banned').doc(uid).set({ name: n, date: firebase.firestore.FieldValue.serverTimestamp() });
                 await db.collection('reviews').doc(uid).delete();
             }
         }
@@ -368,10 +383,11 @@
                             <img src="${r.photo || ''}">
                             <div class="rev-name">${r.name}</div>
                         </div>
-                        <p style="opacity: 0.8; line-height: 1.6;">${r.text}</p>
+                        <p style="opacity: 0.8; line-height: 1.8; white-space: pre-wrap;">${r.text}</p>
                         <div class="admin-controls">${adBtn}</div>
                     </div>`;
             });
+            if(list.innerHTML === "") list.innerHTML = "<p style='text-align:center; opacity:0.2; letter-spacing:5px; margin-top:50px;'>AWAITING INCOMING DATA...</p>";
         });
     </script>
 </body>
